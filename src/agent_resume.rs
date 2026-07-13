@@ -88,6 +88,7 @@ pub fn is_reserved_native_state_source(source: &str, agent: &str) -> bool {
             | ("herdr:droid", "droid")
             | ("herdr:qodercli", "qodercli")
             | ("herdr:cursor", "cursor")
+            | ("herdr:junie", "junie")
     )
 }
 
@@ -186,6 +187,13 @@ pub fn plan(source: &str, agent: &str, session_ref: &AgentSessionRef) -> Option<
                 session_ref.value.clone(),
             ]
         }
+        ("herdr:junie", "junie", AgentSessionRefKind::Id) => {
+            vec![
+                "junie".into(),
+                "--resume".into(),
+                session_ref.value.clone(),
+            ]
+        }
         _ => return None,
     };
 
@@ -220,6 +228,7 @@ fn is_official_agent_source(source: &str, agent: &str) -> bool {
             | ("herdr:qodercli", "qodercli")
             | ("herdr:kilo", "kilo")
             | ("herdr:cursor", "cursor")
+            | ("herdr:junie", "junie")
     )
 }
 

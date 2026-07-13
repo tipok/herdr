@@ -1,0 +1,37 @@
+id = "junie"
+version = "2026.07.13.1"
+min_engine_version = 2
+updated_at = "2026-07-13T00:00:00Z"
+
+[[rules]]
+id = "working_spinner"
+state = "working"
+priority = 1000
+region = "bottom_non_empty_lines"
+visible_working = true
+regex = ['[\x{2800}-\x{28FF}] Thinking\.\.\. esc to stop']
+
+[[rules]]
+id = "blocked_permission"
+state = "blocked"
+priority = 900
+region = "bottom_non_empty_lines"
+visible_blocker = true
+contains = ["space to select", "esc to cancel"]
+any = [
+  { regex = ['→ ○'] },
+  { regex = ['○ .*\\(recommended\\)'] },
+]
+
+[[rules]]
+id = "idle_prompt"
+state = "idle"
+priority = 250
+region = "bottom_non_empty_lines"
+visible_idle = true
+contains = [">"]
+any = [
+  { contains = ["Tell me about"] },
+  { contains = ["Type your prompt"] },
+  { contains = ["available commands"] },
+]

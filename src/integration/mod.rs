@@ -182,6 +182,10 @@ const CURSOR_INTEGRATION_VERSION: u32 = 1;
 const MASTRACODE_HOOK_INSTALL_NAME: &str = "herdr-agent-state.sh";
 const MASTRACODE_HOOK_ASSET: &str = include_str!("assets/mastracode/herdr-agent-state.sh");
 const MASTRACODE_INTEGRATION_VERSION: u32 = 1;
+const JUNIE_HOOK_INSTALL_NAME: &str = "herdr-agent-state.sh";
+const JUNIE_HOOK_ASSET: &str = include_str!("assets/junie/herdr-agent-state.sh");
+const JUNIE_INTEGRATION_VERSION: u32 = 1;
+const JUNIE_HOOK_EVENTS: [(&str, &str); 1] = [("SessionStart", "session")];
 const MASTRACODE_HOOK_TIMEOUT_MS: u64 = 10_000;
 const MASTRACODE_HOOK_EVENTS: [(&str, &str); 12] = [
     ("SessionStart", "idle"),

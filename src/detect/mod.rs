@@ -62,10 +62,11 @@ pub enum Agent {
     Kilo,
     Qodercli,
     Maki,
+    Junie,
 }
 
 impl Agent {
-    pub const SCREEN_MANIFEST_AGENTS: [Self; 19] = [
+    pub const SCREEN_MANIFEST_AGENTS: [Self; 20] = [
         Self::Pi,
         Self::Claude,
         Self::Codex,
@@ -85,6 +86,7 @@ impl Agent {
         Self::Kilo,
         Self::Qodercli,
         Self::Maki,
+        Self::Junie,
     ];
 }
 
@@ -111,6 +113,7 @@ pub fn agent_label(agent: Agent) -> &'static str {
         Agent::Kilo => "kilo",
         Agent::Qodercli => "qodercli",
         Agent::Maki => "maki",
+        Agent::Junie => "junie",
     }
 }
 
@@ -147,6 +150,7 @@ fn lookup_agent(name: &str) -> Option<Agent> {
         "kilo" | "kilo-code" | "kilo code" => Some(Agent::Kilo),
         "qodercli" | "qoderclicn" | "qoder" | "qodercn" => Some(Agent::Qodercli),
         "maki" => Some(Agent::Maki),
+        "junie" | "junie-cli" => Some(Agent::Junie),
         _ => None,
     }
 }
@@ -632,6 +636,8 @@ mod tests {
         assert_eq!(identify_agent("kilo"), Some(Agent::Kilo));
         assert_eq!(identify_agent("kilo-code"), Some(Agent::Kilo));
         assert_eq!(identify_agent("maki"), Some(Agent::Maki));
+        assert_eq!(identify_agent("junie"), Some(Agent::Junie));
+        assert_eq!(identify_agent("junie-cli"), Some(Agent::Junie));
     }
 
     #[test]
@@ -684,6 +690,7 @@ mod tests {
             Agent::Kilo,
             Agent::Qodercli,
             Agent::Maki,
+            Agent::Junie,
         ];
 
         for agent in agents {
